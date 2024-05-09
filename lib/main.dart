@@ -1,3 +1,5 @@
+import 'package:consentimiento_informado/generar_consentimiento.dart';
+import 'package:consentimiento_informado/paciente_model.dart';
 import 'package:flutter/material.dart';
 
 import 'my_home_page.dart';
@@ -21,7 +23,9 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrangeAccent),
         useMaterial3: true,
       ),
-      home: MyHomePage(title: title),
+      home: GenerarConsentimiento(
+        paciente: Paciente(),
+      ),
     );
   }
 }

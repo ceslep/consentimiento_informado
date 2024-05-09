@@ -24,13 +24,14 @@ class _SignatureState extends State<Signature> {
   }
 
   Future<String> _getImageData() async {
-    final directory = await getApplicationDocumentsDirectory();
+    //   final directory = await getApplicationDocumentsDirectory();
     Uint8List imageData =
         (await _drawingController.getImageData())!.buffer.asUint8List();
-    final file = File('${directory.path}/firma.png');
-    await file.writeAsBytes(imageData);
+    /*   final file = File('${directory.path}/firma.png');
+    await file.writeAsBytes(imageData); */
     String base64String = imageToBase64(imageData);
     return base64String;
+    // return "data:image/png;base64,$base64String";
   }
 
   @override
@@ -73,7 +74,7 @@ class _SignatureState extends State<Signature> {
                 String firma = await _getImageData();
 
                 if (mounted) {
-                  Navigator.pop(context, {"firma": firma});
+                  Navigator.pop(context, firma);
                 }
               },
             ),

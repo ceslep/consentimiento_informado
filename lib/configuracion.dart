@@ -19,6 +19,7 @@ class _ConfiguracionState extends State<Configuracion> {
       TextEditingController(text: '');
   final TextEditingController telefonoController =
       TextEditingController(text: '');
+  final TextEditingController firmaController = TextEditingController(text: '');
   final bar = const SnackBar(
     content: Text(
       'Configuración guardada!',
@@ -32,6 +33,7 @@ class _ConfiguracionState extends State<Configuracion> {
     loadData('profesional', profesionalController);
     loadData('direccion', direccionController);
     loadData('telefono', telefonoController);
+    loadData('firma', firmaController);
   }
 
   Future<void> loadData(String key, TextEditingController controller) async {
@@ -108,12 +110,26 @@ class _ConfiguracionState extends State<Configuracion> {
               ),
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              controller: firmaController,
+              onChanged: (value) => saveData('firma', value),
+              keyboardType: TextInputType.url,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Firma Profesional(Base64)',
+                hintText: 'Ingrese firma profesional en codigo base 64',
+              ),
+            ),
+          ),
           ElevatedButton(
             onPressed: () {
               saveData('url', urlController.text);
               saveData('profesional', profesionalController.text);
               saveData('direccion', direccionController.text);
               saveData('telefono', telefonoController.text);
+              saveData('firma', firmaController.text);
               bar.show(context);
             },
             child: const Text('Guardar'),
