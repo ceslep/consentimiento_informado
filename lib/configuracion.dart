@@ -13,6 +13,12 @@ class _ConfiguracionState extends State<Configuracion> {
   String url = '';
   final TextEditingController urlController =
       TextEditingController(text: 'http://192.');
+  final TextEditingController profesionalController =
+      TextEditingController(text: '');
+  final TextEditingController direccionController =
+      TextEditingController(text: '');
+  final TextEditingController telefonoController =
+      TextEditingController(text: '');
   final bar = const SnackBar(
     content: Text(
       'Configuración guardada!',
@@ -22,23 +28,23 @@ class _ConfiguracionState extends State<Configuracion> {
   @override
   void initState() {
     super.initState();
-    loadUrl();
+    loadData('url', urlController);
+    loadData('profesional', profesionalController);
+    loadData('direccion', direccionController);
+    loadData('telefono', telefonoController);
   }
 
-  Future<void> loadUrl() async {
+  Future<void> loadData(String key, TextEditingController controller) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      url = prefs.getString('url') ?? '';
-      urlController.text = url;
+      String data = prefs.getString(key) ?? '';
+      controller.text = data;
     });
   }
 
-  Future<void> saveUrl(String userurl) async {
+  Future<void> saveData(String key, String data) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString('url', url);
-    setState(() {
-      url = userurl;
-    });
+    await prefs.setString(key, data);
   }
 
   @override
@@ -54,7 +60,7 @@ class _ConfiguracionState extends State<Configuracion> {
             padding: const EdgeInsets.all(8.0),
             child: TextField(
               controller: urlController,
-              onChanged: (value) => saveUrl(value),
+              onChanged: (value) => saveData('url', value),
               keyboardType: TextInputType.url,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
@@ -63,9 +69,51 @@ class _ConfiguracionState extends State<Configuracion> {
               ),
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              controller: profesionalController,
+              onChanged: (value) => saveData('profesional', value),
+              keyboardType: TextInputType.url,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Profesional Tratante',
+                hintText: 'Ingrese profesional tratante',
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              controller: direccionController,
+              onChanged: (value) => saveData('direccion', value),
+              keyboardType: TextInputType.url,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Direccion Profesional',
+                hintText: 'Ingrese dirección profesional',
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              controller: telefonoController,
+              onChanged: (value) => saveData('telefono', value),
+              keyboardType: TextInputType.url,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Teléfono Profesional',
+                hintText: 'Ingrese teléfono profesional',
+              ),
+            ),
+          ),
           ElevatedButton(
             onPressed: () {
-              saveUrl(urlController.text);
+              saveData('url', urlController.text);
+              saveData('profesional', profesionalController.text);
+              saveData('direccion', direccionController.text);
+              saveData('telefono', telefonoController.text);
               bar.show(context);
             },
             child: const Text('Guardar'),

@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, avoid_print
 
 import 'package:consentimiento_informado/paciente_model.dart';
 import 'package:flutter/material.dart';
@@ -6,10 +6,14 @@ import 'package:flutter/material.dart';
 class Texto extends StatefulWidget {
   final Paciente paciente;
   final String fecha;
+  final List<Map<String, String>> representacion;
+  final List<Map<String, String>> configuracion;
   const Texto({
     super.key,
     required this.paciente,
     required this.fecha,
+    required this.representacion,
+    required this.configuracion,
   });
 
   @override
@@ -28,10 +32,10 @@ class _TextoState extends State<Texto> {
       TextSpan(
           text:
               'Yo, ${widget.paciente.nombres} identificado con la CC No. ${widget.paciente.identificacion} o en nombre y representación de\n'),
-      TextSpan(text: '\n\n'),
+      TextSpan(text: widget.representacion[1]["nombres"]),
       TextSpan(
           text:
-              'identificado con la CC_OTI_NO capacidad decisoria, expresamente manifiesto: persona quien no cuenta con\n\n'),
+              ' con documento de identidad N° ${widget.representacion[0]["identificacion"]} quien no cuenta capacidad decisoria, expresamente manifiesto:\n\n'),
       TextSpan(
         text: '[1] ',
         style: TextStyle(fontWeight: FontWeight.bold),
@@ -72,8 +76,9 @@ class _TextoState extends State<Texto> {
         style: TextStyle(fontWeight: FontWeight.bold),
       ),
       TextSpan(
-          text:
-              'He contado con el tiempo necesario para madurar las decisiones contenidas en el presente documento: haciendo constar que me fue explicado el derecho que me asiste a arrepentirme o cambiar de opinión por cualquier razón y consecuentemente desistir del procedimiento o tratamiento previamente autorizado.\n\n'),
+        text:
+            'He contado con el tiempo necesario para madurar las decisiones contenidas en el presente documento: haciendo constar que me fue explicado el derecho que me asiste a arrepentirme o cambiar de opinión por cualquier razón y consecuentemente desistir del procedimiento o tratamiento previamente autorizado.\n\n',
+      ),
       TextSpan(
           text:
               'Se deja expresa constancia de la confidencialidad que tendrán los datos suministrados y consig- nados dentro del presente documento, el cual se incorporară a la historia clínica y formará parte integrante de esta para todos los efectos legales.\n\n'),
@@ -81,22 +86,39 @@ class _TextoState extends State<Texto> {
           text:
               'Suscribimos el presente documento las personas que en el intervenimos:\n\n'),
       TextSpan(text: 'PACIENTE O REPRESENTANTE LEGAL\n\n'),
-      TextSpan(text: 'PROFESIONAL TRATANTE\n\n'),
-      TextSpan(text: 'Dirección:\n\n'),
-      TextSpan(text: 'Teléfono:\n\n'),
-      TextSpan(text: 'EPS: ARS\n\n'),
-      TextSpan(text: 'Empresa de salud prepagada\n\n'),
-      TextSpan(text: 'Dirección:\n\n'),
-      TextSpan(text: 'Teléfono:\n\n'),
+      TextSpan(text: '${widget.representacion[1]['nombres']}\n'),
+      TextSpan(text: 'Dirección:\n'),
+      TextSpan(text: '${widget.representacion[2]['direccion']}\n'),
+      TextSpan(text: 'Teléfono:\n'),
+      TextSpan(text: '${widget.representacion[3]['telefono']}\n'),
+      TextSpan(text: 'EPS: ARS\n'),
+      TextSpan(text: '${widget.representacion[4]['eps']}\n'),
+      TextSpan(text: 'Empresa de salud prepagada\n'),
+      TextSpan(text: '${widget.representacion[5]['prepagada']}\n'),
+      TextSpan(text: '\n\n'),
+      TextSpan(text: 'PROFESIONAL TRATANTE\n'),
+      TextSpan(text: "${widget.configuracion[0]["profesional"]}\n"),
+      TextSpan(text: 'Dirección:\n'),
+      TextSpan(text: "${widget.configuracion[1]["direccion"]}\n"),
+      TextSpan(text: 'Teléfono:\n'),
+      TextSpan(text: "${widget.configuracion[2]["telefono"]}\n"),
+      TextSpan(text: '\n\n'),
       TextSpan(text: 'TESTIGO\n\n'),
       TextSpan(text: 'Nombre:\n\n'),
       TextSpan(text: 'Dirección:\n\n'),
       TextSpan(text: 'Nombre:\n\n'),
+      TextSpan(text: '\n\n'),
       TextSpan(text: 'PERSONA A CONTACTAR\n\n'),
       TextSpan(text: 'Firma:\n\n'),
       TextSpan(text: 'Teléfono:\n'),
     ];
     return textSpans;
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    print(widget.representacion);
   }
 
   @override
