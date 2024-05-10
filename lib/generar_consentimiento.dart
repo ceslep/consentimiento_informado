@@ -140,7 +140,7 @@ class _GenerarConsentimientoState extends State<GenerarConsentimiento> {
         {"firmaProfesional": ""},
         {"fecha": _fechaController.text}
       ];
-      representacion = [
+      /*  representacion = [
         {"identificacionPaciente": "1010125403"},
         {"nombresPaciente": "Yenifer Idarraga Gutierrez"},
         {"idRepresentante": "9695141"},
@@ -165,7 +165,7 @@ class _GenerarConsentimientoState extends State<GenerarConsentimiento> {
         {"firma": ""},
         {"firmaProfesional": ""},
         {"fecha": _fechaController.text},
-      ];
+      ]; */
     }
     reconfigura();
   }
