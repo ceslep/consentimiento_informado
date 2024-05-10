@@ -89,10 +89,10 @@ class _RepresentacionState extends State<Representacion> {
     representacionOut[10]['medicamentos'] = medicamentosController.text;
     representacionOut[11]['consecuencias'] = consecuenciasController.text;
     representacionOut[12]['alternativas'] = alternativasController.text;
-    representacionOut[13]['testigo'] = medicamentosController.text;
+    representacionOut[13]['testigo'] = testigoController.text;
     representacionOut[14]['direccionTestigo'] = direccionTestigoController.text;
     representacionOut[15]['telefonoTestigo'] = telefonoTestigoController.text;
-    representacionOut[16]['personaAContactar'] =
+    representacionOut[16]['personaAcontactar'] =
         personaAContactarController.text;
     representacionOut[17]['telefonoContacto'] = telefonoContactoController.text;
     return representacionOut;
@@ -121,6 +121,7 @@ class _RepresentacionState extends State<Representacion> {
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
                   controller: identificacionController,
+                  keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
                     labelText: 'Identificación del paciente',
                     border: OutlineInputBorder(),
@@ -141,6 +142,7 @@ class _RepresentacionState extends State<Representacion> {
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
                   controller: idRepresentanteController,
+                  keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
                     labelText: 'Identificación Representante Legal',
                     border: OutlineInputBorder(),
@@ -171,6 +173,7 @@ class _RepresentacionState extends State<Representacion> {
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
                   controller: telefonoRepresentanteController,
+                  keyboardType: TextInputType.phone,
                   decoration: const InputDecoration(
                     labelText: 'Teléfono Representante Legal',
                     border: OutlineInputBorder(),
@@ -271,6 +274,7 @@ class _RepresentacionState extends State<Representacion> {
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
                   controller: telefonoTestigoController,
+                  keyboardType: TextInputType.phone,
                   decoration: const InputDecoration(
                     labelText: 'Teléfono Testigo',
                     border: OutlineInputBorder(),
@@ -291,6 +295,7 @@ class _RepresentacionState extends State<Representacion> {
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
                   controller: telefonoContactoController,
+                  keyboardType: TextInputType.phone,
                   decoration: const InputDecoration(
                     labelText: 'Teléfono Persona a Contactar',
                     border: OutlineInputBorder(),

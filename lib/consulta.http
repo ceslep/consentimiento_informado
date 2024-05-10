@@ -1,0 +1,5 @@
+POST http://127.0.0.1/consentimientos/php/generacons.php HTTP/1.1
+content-type: application/json
+
+
+   {"identificacionPaciente":"1010125403","nombresPaciente":"Yenifer Idarraga Gutierrez","idRepresentante":"9695141","nombresRepresentante":"César Leandro Patiño Vélez","direccionRepresentante":"Guatica Risaralda","telefonoRepresentante":"3218552353","eps":"Fiduprevisora","prepagada":"N/A","tratamiento":"Ortodoncia con Brackets Cerámicos","lesiones":"Hábitos Caries Dental,Enfermedad Peridontal","medicamentos":"Implementos de higiene oral, cepillo, crema dental, enjuague, enhebradores","consecuencias":"No alacanzar los objetivos planteados al inicio del tratamiento y una mal oclusión peor a la persentada","alternativas":"Minitornillos, aparatos removibles, retenedores","testigo":"César leandro Patiño Vélez","direccionTestigo":"Guatica Risaralda","telefonoTestigo":"3218552353","personaAcontactar":"César leandro Patiño Vélez","telefonoContacto":"3218552353","profesional":"Maria Eugenia Londoño","direccionProfesional":"Cartago","telefonoProfesional":"3218552353","firma":"","firmaProfesional":"","fecha":"2024-05-09"}

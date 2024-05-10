@@ -55,87 +55,104 @@ class _ConfiguracionState extends State<Configuracion> {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 246, 202, 253),
         title: const Text('Configuración'),
-      ),
-      body: Column(
-        children: <Widget>[
+        actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: urlController,
-              onChanged: (value) => saveData('url', value),
-              keyboardType: TextInputType.url,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Dirección IP del servidor',
-                hintText: 'Ingrese Url',
-              ),
+            child: IconButton(
+              onPressed: () {
+                guardarTodo(context);
+              },
+              icon: const Icon(Icons.save),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: profesionalController,
-              onChanged: (value) => saveData('profesional', value),
-              keyboardType: TextInputType.url,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Profesional Tratante',
-                hintText: 'Ingrese profesional tratante',
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: direccionController,
-              onChanged: (value) => saveData('direccion', value),
-              keyboardType: TextInputType.url,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Direccion Profesional',
-                hintText: 'Ingrese dirección profesional',
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: telefonoController,
-              onChanged: (value) => saveData('telefono', value),
-              keyboardType: TextInputType.url,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Teléfono Profesional',
-                hintText: 'Ingrese teléfono profesional',
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: firmaController,
-              onChanged: (value) => saveData('firma', value),
-              keyboardType: TextInputType.url,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Firma Profesional(Base64)',
-                hintText: 'Ingrese firma profesional en codigo base 64',
-              ),
-            ),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              saveData('url', urlController.text);
-              saveData('profesional', profesionalController.text);
-              saveData('direccion', direccionController.text);
-              saveData('telefono', telefonoController.text);
-              saveData('firma', firmaController.text);
-              bar.show(context);
-            },
-            child: const Text('Guardar'),
           ),
         ],
       ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: urlController,
+                onChanged: (value) => saveData('url', value),
+                keyboardType: TextInputType.url,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Dirección IP del servidor',
+                  hintText: 'Ingrese Url',
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: profesionalController,
+                onChanged: (value) => saveData('profesional', value),
+                keyboardType: TextInputType.url,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Profesional Tratante',
+                  hintText: 'Ingrese profesional tratante',
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: direccionController,
+                onChanged: (value) => saveData('direccion', value),
+                keyboardType: TextInputType.url,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Direccion Profesional',
+                  hintText: 'Ingrese dirección profesional',
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: telefonoController,
+                onChanged: (value) => saveData('telefono', value),
+                keyboardType: TextInputType.phone,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Teléfono Profesional',
+                  hintText: 'Ingrese teléfono profesional',
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: firmaController,
+                onChanged: (value) => saveData('firma', value),
+                keyboardType: TextInputType.url,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Firma Profesional(Base64)',
+                  hintText: 'Ingrese firma profesional en codigo base 64',
+                ),
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                guardarTodo(context);
+              },
+              child: const Text('Guardar'),
+            ),
+          ],
+        ),
+      ),
     );
+  }
+
+  void guardarTodo(BuildContext context) {
+    saveData('url', urlController.text);
+    saveData('profesional', profesionalController.text);
+    saveData('direccion', direccionController.text);
+    saveData('telefono', telefonoController.text);
+    saveData('firma', firmaController.text);
+    bar.show(context);
   }
 }

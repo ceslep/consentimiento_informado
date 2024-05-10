@@ -1,8 +1,6 @@
 // ignore_for_file: avoid_print, use_build_context_synchronously
 
-import 'dart:io';
 import 'package:consentimiento_informado/confirm_dialog.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_drawing_board/flutter_drawing_board.dart';
 import 'dart:typed_data';

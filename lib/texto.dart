@@ -21,6 +21,14 @@ class Texto extends StatefulWidget {
 }
 
 class _TextoState extends State<Texto> {
+  late List<TextSpan> lineas = [];
+
+  @override
+  void initState() {
+    super.initState();
+    //  lineas = generaLineas();
+  }
+
   List<TextSpan> generaLineas() {
     List<TextSpan> textSpans = [
       TextSpan(
@@ -121,9 +129,10 @@ class _TextoState extends State<Texto> {
 
   @override
   Widget build(BuildContext context) {
+    lineas = generaLineas();
     return RichText(
       text: TextSpan(
-        children: generaLineas(),
+        children: lineas,
         style: const TextStyle(
           color: Colors.black,
         ),
